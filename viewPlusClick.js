@@ -1,11 +1,11 @@
 function isInViewport(el) {
-    let rect = el.querySelector('span').getBoundingClientRect()
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    )}
+	let rect = el.querySelector('span').getBoundingClientRect()
+	return (
+	rect.top >= 0 &&
+	rect.left >= 0 &&
+	rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+	rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+)}
 
 const itemList = Array.from(document.querySelectorAll('.prod_link'))
 const alreadyShown = []
@@ -33,3 +33,12 @@ document.addEventListener('scroll', function() {
 		newPrint = []
 	}, 500)
 })
+
+for (let j = 0; j < itemList.length; j++) {
+	itemList[j].querySelector('span').addEventListener('click', function() {
+		let item = itemList[j]
+		console.group('Click')
+		console.log(pageType, item)
+		console.groupEnd()
+	})
+}
